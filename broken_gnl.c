@@ -93,7 +93,7 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 
 char	*get_next_line(int fd)
 {
-	static char	b[BUFFER_SIZE] = " ";
+	static char	b[BUFFER_SIZE + 1];
 	char		*ret = NULL;
 	char		*tmp;
 	int			read_ret = read(fd, b, BUFFER_SIZE); // bytes read check
