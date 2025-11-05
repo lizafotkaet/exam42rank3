@@ -1,0 +1,184 @@
+|------------------------------------------------------------------|
+|-------------------------FILTER-----------------------------------|
+|------------------------------------------------------------------|
+
+Assignment name: filter
+Expected files: filter.c
+Allowed functions: read, write, strlen, memmem, memmove, malloc, calloc,
+realloc, free, printf, fprintf, stdout, stderr, perror
+--------------------------------------------------------------------------------
+
+Write a program that will take one and only one argument s.
+
+Your program will then read from stdin and write all the content read in stdout
+except that every occurrence of s must be replaced by '*' (as many as the length
+of s). 
+Your program will be tested with random buffer sizes, using a custom read
+function. Therefore the buffer being set in your program will be filled with a
+different number of chars each new call.
+
+
+For example:
+
+./filter bonjour
+will behave in the same way as:
+sed 's/bonjour/*******/g'
+
+./filter abc
+will behave in the same way as:
+sed's/abc/***/g'
+
+More generally your program must be the equivalent of the shell script filter.sh
+present in this directory (you can compare your program with it).
+
+In case of error during a read or a malloc, you must write "Error: " followed by
+the error message in stderr and return 1.
+
+If the program is called without arguments or with an empty argument or with multiple
+arguments, it must return 1.
+
+For example this should work:
+
+$> echo 'abcdefaaaabcdeabcabcdabc' | ./filter abc | cat -e
+***defaaa***de******d***$
+$> echo 'ababcabababc' | ./filter ababc | cat -e
+*****ab*****$
+$>
+
+
+|---------------------------------------------------------------------|
+|--------------------------SCANF--------------------------------------|
+|---------------------------------------------------------------------|
+
+Assignment name  : ft_scanf
+Expected files   : ft_scanf.c
+Allowed functions: fgetc, ungetc, ferror, feof, isspace, isdigit, stdin, va_start, 
+                   va_arg, va_copy, va_end
+--------------------------------------------------------------------------------
+
+
+Write a function named `ft_scanf` that will mimic the real scanf with the 
+following constraints:
+
+- It will manage only the following conversions: s, d, and c
+- You don't have to handle the options *, m and '
+- You don't have to handle the maximum field width
+- You don't have to handle the types modifier characters (h, hh, l, etc.)
+- You don't have to handle the conversions beginning with %n$
+
+Your function must be declared as follows:
+
+int ft_scanf(const char *, ... );
+
+You will find in this directory a file containing a part of the code you will need, 
+you just have to complete it.
+
+To test your program compare your results with the real scanf.
+
+Hint : You may need to read the man of scanf.
+
+
+
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////
+
+#include <stdarg.h>
+#include <stdio.h>
+#include <ctype.h>
+
+int match_space(FILE *f)
+{
+        // You may insert code here
+    return (0);
+}
+
+int match_char(FILE *f, char c)
+{
+        // You may insert code here
+    return (0);
+}
+
+int scan_char(FILE *f, va_list ap)
+{
+        // You may insert code here
+    return (0);
+}
+
+int scan_int(FILE *f, va_list ap)
+{
+        // You may insert code here
+    return (0);
+}
+
+int scan_string(FILE *f, va_list ap)
+{
+        // You may insert code here
+    return (0);ft_scanf`
+}
+
+
+int	match_conv(FILE *f, const char **format, va_list ap)
+{
+	switch (**format)
+	{
+		case 'c':
+			return scan_char(f, ap);
+		case 'd':
+			match_space(f);
+			return scan_int(f, ap);
+		case 's':
+			match_space(f);
+			return scan_string(f, ap);
+		case EOF:
+			return -1;
+		default:
+			return -1;
+	}
+}
+
+int ft_vfscanf(FILE *f, const char *format, va_list ap)
+{
+	int nconv = 0;
+
+	int c = fgetc(f);
+	if (c == EOF)
+		return EOF;
+	ungetc(c, f);
+
+	while (*format)
+	{
+		if (*format == '%')
+		{
+			format++;
+			if (match_conv(f, &format, ap) != 1)
+				break;
+			else
+				nconv++;
+		}
+		else if (isspace(*format))
+		{
+			if (match_space(f) == -1)
+				break;
+		}
+		else if (match_char(f, *format) != 1)
+			break;
+		format++;
+	}
+	
+	if (ferror(f))
+		return EOF;
+	return nconv;
+}
+
+
+int ft_scanf(const char *format, ...)
+{
+	// ...
+	int ret = ft_vfscanf(stdin, format, ap);
+	// ...
+	return ret;
+}
+

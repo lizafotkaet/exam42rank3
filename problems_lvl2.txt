@@ -1,0 +1,386 @@
+ __________________________________________________________________
+|__________________________________________________________________|
+|_______________________NQUEENS____________________________________|
+|__________________________________________________________________|
+
+Assignement name : n_queens
+
+Expected files : *.c *.h
+
+Allowed functions : atoi, fprintf, write
+
+-------------------------------------------------------------------------
+
+Write a program that will print all the solutions to the n queens problem
+for a n given as argument.
+We will not test with negative values.
+The order of the solutions is not important.
+
+You will display the solutions under the following format :
+<p1> <p2> <p3> ... \n
+where pn are the line index of the queen in each colum starting from 0.
+
+For example this should work :
+$> ./n_queens 2 | cat -e
+
+$> ./n_queens 4 | cat -e
+1 3 0 2$
+2 0 3 1$
+
+$> ./n_queens 7 | cat -e
+0 2 4 6 1 3 5$
+0 3 6 2 5 1 4$
+
+
+
+
+Another version of a subject:
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+Subject: n_queens
+Files: **.c **.h
+Allowed functions: atoi, printf, write, malloc, calloc, realloc
+
+Write a program that will print all the solutions of n_queens problem for a n given as argument.
+
+The n_queens problem is a classic puzzle that involves placing N queens on a NxN chessboard in such a way that no queens threaten each other.
+
+We will not test with negative values.
+The order of the solutions is not important.
+
+You will display the solutions under the following format:
+<p1><p2><p3><p4>...\n
+
+Where pn are the line index of the queen in each column starting from 0.
+
+For instance, if you want to place your queens on the chessboard like this:
+0: . . Q .
+1: Q . . .
+2: . . . Q
+3: . Q . .
+
+You must provide the following output:
+1 3 0 2
+
+For example, this should work:
+$> ./n_queens 2 | cat -e
+$> ./n_queens 4 | cat -e
+1 3 0 2$
+2 0 3 1$
+$> ./n_queens 7 | cat -e
+0 2 4 6 1 3 5$
+0 3 6 2 5 1 4$
+0 4 1 5 2 6 3$
+
+ __________________________________________________________________
+|__________________________________________________________________|
+|_________________________PERMUTATIONS_____________________________|
+|__________________________________________________________________|
+
+Assignment name : permutations
+
+Expected files : *.c *.h
+Allowed functions : puts, malloc, calloc, realloc, free, write
+---------------------------------------------------------------
+
+Write a program that will print all the permutations of a string given as argument.
+
+The solutions must be given in alphabetical order.
+
+We will not try your program with strings containing duplicates (eg: 'abccd')
+
+For example this should work:
+$> ./permutations a | cat -e
+a$
+$> ./permutations ab | cat -e
+ab$
+ba$
+$> ./permutations abc | cat -e
+abc$
+acb$
+bac$
+bca$
+cab$
+cba$
+
+ ____________________________________________________________________
+|____________________________________________________________________|
+|_______________________POWERSET_____________________________________|
+|____________________________________________________________________|
+
+
+---
+
+### Sujet :
+
+write programm that will take as arguments an integer n followed by a set s of integer.
+your programm should display all the subsets of s whose sum of elements is n.
+
+in case of a malloc your programm will exit with code 1.
+
+we will not test with invalid sets (for exampl '1 1 2')
+
+hint : the empty set is a subset of any set
+
+for exampl :
+
+$> ./power_set1 3 1 0 2 4 5 3 | cat -e
+3$
+0 3$
+1 2$
+1 0 2$
+
+$> ./power_set1 12 5 2 1 8 4 3 7 11 | cat -e
+8 4$
+1 11$
+1 4 7$
+1 8 3$
+2 3 7$
+5 7$
+5 4 3$
+5 2 1 4$
+
+$> ./power_set1 7 3 8 2 | cat -e
+$> ./power_set1 0 1 -1 | cat -e
+$
+1 -1$
+
+the order of lines is not important but order of elements in a subset is.
+
+you must not have any duplicates(eg: '1 2' and '2 1')
+
+for example for the command $> ./power_set1 5 1 2 3 4 5
+this is valid :
+1 4
+2 3
+5
+this is also valid :
+2 3
+5
+1 4
+but not this one
+4 1
+3 2
+5
+
+
+
+
+
+
+
+====================================================================================================================
+Another version of a subject:
+display all subsets of a set whose sum of its elements is equal to the first argument.
+The numbers of the set are from the second argument to the last.
+A subset must not be displayed a second time.
+
+ex1
+./a.out 5 2 3 | cat -e
+2 3$
+
+ex2
+./a.out 12 5 7 4 3 2 | cat -e
+5 7$
+5 4 3$
+7 3 2$
+*/
+
+ils ne testent pas des séquences invalides telles que :
+
+./a.out 5 12 18 | cat -e
+
+l'ordre des lignes n'est pas important, par contre l'ordre de l'input l'est.
+
+ceci est valide
+
+./a.out 5 3 2 1 4 | cat -e 
+3 2$
+1 4$
+
+ceci est valide
+
+./a.out 5 3 2 1 4 | cat -e 
+1 4$
+3 2$
+
+ceci n'est pas valide
+
+./a.out 5 3 2 1 4 | cat -e 
+4 1$
+2 3$
+
+faire attention au cas ou le nombre à atteindre est 0 car 'rien' est condidérê comme une possibilité donc il faudra afficher une nouvelle ligne
+
+./a.out 0 1 -1 2 -2 | cat -e
+$
+-1 1 2 -2$
+-1 1$
+2 -2$
+
+
+
+
+
+
+
+
+Another version of a subject:
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Another version of a subject:-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+/*
+Expected files: *.c, *.h
+Allowed functions: atoi, printf, fprintf, malloc, calloc, realloc, free, stdout, write
+
+Write a program that takes an integer n followed by a set s of distingt integers as an argument. Your program should display all the subsets of s whose sum of elements in n. The order of the lines is not important, but the order of elements in a subset is: it must match the order in the initial set s. This way, you should not have any duplicates (eg: '1 2' and '2 1').
+For example using the command
+
+./powerset 5 1 2 3 4 5
+
+this output is valid:
+1 4
+2 3
+5
+
+this one is also valid:
+2 3
+5 
+1 4
+
+but this one is not:
+4 1
+3 2
+5
+
+In case of a malloc error your program must exit with the code 1. We will not test with invalid sets (for example '1 1 2'). Hint: the empty subset is a valid subset of any set. It will be displayed as an empty line. For example this should work:
+
+./powerset 3 1 0 2 4 5 3 | cat -e
+3
+0 3
+1 2
+1 0 2
+
+./powerset 12 5 2 1 8 4 3 7 11 | cat -e
+8 4
+1 11
+1 4 7
+1 8 3
+2 3 7
+5 7
+5 4 3
+5 2 1 4
+
+./powerset 0 1 -1 | cat -e
+$
+1 -1
+
+./powerset 7 3 8 2 | cat -e
+$>	
+*/
+
+ ____________________________________________________________________
+|____________________________________________________________________|
+|____________________________RIP_____________________________________|
+|____________________________________________________________________|
+
+Assignment name: rip
+Expected files: *.c *.h
+Allowed functions: puts, write
+--------------------------------------------------------------------------------
+Write a program that will take as argument a string containing only parenthesis.
+If parenthesis are unbalanced (for example "())") your program shall remove the
+minimum number of parenthesis for the expression to be balanced.
+By removing we mean replacing by spaces.
+You will print all the solutions (can be more than one).
+The order of the solutions is not important.
+For example this should work:
+(For readability reasons the '_' means space and the spaces are for readability only.)
+$> ./rip '( ( )' | cat -e
+_ ( ) $
+( _ ) $
+$> ./rip '( ( ( ) ( ) ( ) ) ( ) )' | cat -e
+( ( ( ) ( ) ( ) ) ( ) ) $
+$> ./rip '( ) ( ) ) ( )' | cat -e
+( ) ( ) _ ( ) $
+( ) ( _ ) ( ) $
+( _ ( ) ) ( ) $
+$> ./rip '( ( ) ( ( ) (' | cat -e
+( ( ) _ _ ) _ $
+( _ ) ( _ ) _ $
+( _ ) _ ( ) _ $
+_ ( ) ( _ ) _ $
+_ ( ) _ ( ) _ $
+
+
+ ____________________________________________________________________
+|____________________________________________________________________|
+|____________________________TSP_____________________________________|
+|____________________________________________________________________|
+
+Assignment name			: tsp
+Expected files			: *.c *.h
+Allowed functions   : write, sqrtf, getline, fseek, fscanf, ferror, feof, fabsf, memcpy, fprintf, fclose, malloc, calloc, realloc, free, fopen, errno, stderr, stdin, stdout
+-------------------------------------------------------
+
+The first publication referring to this problem as the "traveling salesman 
+problem" is found in the 1949 RAND Corporation report by Julia Robinson, 
+"On the Hamiltonian game (a traveling salesman problem)."
+
+Here is how she defines the problem:
+
+"The purpose of this note is to give a method for solving a problem related
+to the traveling salesman problem. It seems worthwhile to give a description
+of the original problem. One formulation is to find the shortest route for a
+salesman starting from Washington, visiting all the state capitals and then
+returning to Washington.
+
+More generally, to find the shortest CLOSED CURVE containing n given points 
+in the plane."
+
+for example with the following set of cities:
+0, 0
+1, 0
+2, 0
+0, 1
+1, 1
+2, 1
+1, 2
+2, 2
+which can be presented as follows:
++ + +
++ + +
+  + +
+the shortest path is:
+ _____
+|__   |
+   |__|
+
+so you should print the length of this path that is:
+8.00
+
+Write a program that will read a set of city coordinates in the form 
+'%f, %f\n' from the standard input and will print the length of the shortest
+possible path containing all these cities under the form '%.2f'.
+
+Your program will not be tested with more than 11 cities.
+
+You will find in this directory a file tsp.c containing all the boring parts of
+this exercise and example files to help you test your program.
+
+hint: in order to use sqrtf, add -lm at the end of your compilation command.
+
+For example this should work:
+$> cat square.txt
+1, 1
+0, 1
+1, 0
+0, 0
+$> ./tsp < square.txt | cat -e
+4.00$
+
+Hint : in order to use sqrtf , add -lm at the end of your compilation command
+
+
+ ____________________________________________________________________
+|____________________________________________________________________|
+|____________________________TSP_____________________________________|
+|____________________________________________________________________|
